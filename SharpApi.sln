@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpApi.Helpers", "src\Helpers\src\SharpApi.Helpers\SharpApi.Helpers.csproj", "{5888BBC9-3D12-4433-B0EA-6A82C3D06661}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7F2C4A9A-9D46-4828-A2D5-1635456F0072}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{39C13328-C644-47C7-B8AB-0729098E365E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5888BBC9-3D12-4433-B0EA-6A82C3D06661} = {7F2C4A9A-9D46-4828-A2D5-1635456F0072}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07338C3C-7F2A-4002-9F95-958D7A8EB435}
+	EndGlobalSection
+EndGlobal
