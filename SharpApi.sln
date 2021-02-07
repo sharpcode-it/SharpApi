@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7F2C4A9A-9D4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{39C13328-C644-47C7-B8AB-0729098E365E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpApi.Helpers.test", "src\Helpers\test\SharpApi.Helpers.test\SharpApi.Helpers.test.csproj", "{7ABE27BC-90F5-44B8-B9EA-6C374A51EB07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5888BBC9-3D12-4433-B0EA-6A82C3D06661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ABE27BC-90F5-44B8-B9EA-6C374A51EB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABE27BC-90F5-44B8-B9EA-6C374A51EB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABE27BC-90F5-44B8-B9EA-6C374A51EB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABE27BC-90F5-44B8-B9EA-6C374A51EB07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5888BBC9-3D12-4433-B0EA-6A82C3D06661} = {7F2C4A9A-9D46-4828-A2D5-1635456F0072}
+		{7ABE27BC-90F5-44B8-B9EA-6C374A51EB07} = {39C13328-C644-47C7-B8AB-0729098E365E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {07338C3C-7F2A-4002-9F95-958D7A8EB435}
