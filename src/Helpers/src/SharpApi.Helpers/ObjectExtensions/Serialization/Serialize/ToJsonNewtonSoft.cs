@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SharpApi.Helpers.ObjectExtensions.Serialize
+namespace SharpApi.Helpers.ObjectExtensions.Serialization
 {
     public static partial class Serialize
     {
@@ -10,7 +10,7 @@ namespace SharpApi.Helpers.ObjectExtensions.Serialize
         /// <param name="istance"></param>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public static string ToJson(this object istance, JsonSerializerSettings settings)
+        private static string ToJson(this object? istance, JsonSerializerSettings settings)
         {
             return istance == null ? string.Empty : JsonConvert.SerializeObject(istance, settings);
         }

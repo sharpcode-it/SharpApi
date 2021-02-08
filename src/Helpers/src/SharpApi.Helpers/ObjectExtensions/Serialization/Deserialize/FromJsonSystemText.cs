@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace SharpApi.Helpers.ObjectExtensions.Deserialize
+namespace SharpApi.Helpers.ObjectExtensions.Serialization
 {
     public static partial class Deserialize
     {
@@ -11,7 +11,7 @@ namespace SharpApi.Helpers.ObjectExtensions.Deserialize
         /// <param name="istance"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static T FromJson<T>(this string istance,JsonSerializerOptions options) where T : class
+        private static T? FromJson<T>(this string istance,JsonSerializerOptions options) where T : class
        {
            return string.IsNullOrEmpty(istance) ? default : JsonSerializer.Deserialize<T>(istance, options);
        }

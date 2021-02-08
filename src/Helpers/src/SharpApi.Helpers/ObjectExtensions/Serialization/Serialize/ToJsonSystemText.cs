@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace SharpApi.Helpers.ObjectExtensions.Serialize
+namespace SharpApi.Helpers.ObjectExtensions.Serialization
 {
     public static partial class Serialize
     {
@@ -10,10 +10,9 @@ namespace SharpApi.Helpers.ObjectExtensions.Serialize
         /// <param name="istance"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static string ToJson(this object istance, JsonSerializerOptions options)
+        private static string ToJson(this object? istance, JsonSerializerOptions options)
         {
-            return istance == null ? string.Empty : System.Text.Json.JsonSerializer.Serialize(istance, options);
+            return istance == null ? string.Empty : JsonSerializer.Serialize(istance, options);
         }
-
     }
 }
