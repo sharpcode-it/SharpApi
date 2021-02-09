@@ -3,7 +3,7 @@ using SharpApi.Helpers.ObjectExtensions.Serialization;
 using SharpApi.Helpers.test.MockUp;
 using Xunit;
 
-namespace SharpApi.Helpers.test.ObjectExtensions
+namespace SharpApi.Helpers.test.ObjectExtensions.Serialization
 {
     public class SerializationHelperTest
     {

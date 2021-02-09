@@ -36,5 +36,41 @@ namespace SharpApi.Helpers.ValueTypeExtensions
         }
 
 
+        /// <summary>
+        /// Returns a string from the left side with a fixed length of characters
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="length">The number of characters </param>
+        public static string Left(this string str, int length)
+        {
+            if (length == 0 || str.Length == 0) return string.Empty;
+            var result = str;
+            if (length < str.Length)
+            {
+                result = str.Substring(0, length);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Returns a string from the right side with a fixed length of characters
+        /// </summary>
+        /// <param name="str"></param>
+        ///<param name="length">The number of characters </param>
+        public static string Right(this string str, int length)
+        {
+            if (length == 0 || str.Length == 0) return string.Empty;
+            var result = str;
+            if (length < str.Length)
+            {
+                result = str[^length..];
+            }
+            return result;
+        }
+
+        public static bool IsNullOrEmpty(this string? s)
+        {
+            return string.IsNullOrEmpty(s);
+        }
     }
 }

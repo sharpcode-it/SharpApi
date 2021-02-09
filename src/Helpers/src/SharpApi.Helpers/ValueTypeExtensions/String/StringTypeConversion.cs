@@ -39,11 +39,23 @@ namespace SharpApi.Helpers.ValueTypeExtensions
         /// Returns a Guid from  an input string.
         ///  </summary>
         /// <returns></returns>
-        public static Guid ToGuid(this string value)
+        public static Guid ToGuid(this string? value)
         {
+            if (value.IsNullOrEmpty()) return Guid.Empty;
+
             var isValidLong = Guid.TryParse(value, out var result);
 
             return isValidLong ? result : default;
+        }
+
+        /// <summary>
+        /// 
+        ///  </summary>
+        /// <returns></returns>
+        public static T ToEnum<T>(this string value)
+            where T : struct
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
         }
     }
 }
