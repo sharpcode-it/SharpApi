@@ -1,6 +1,6 @@
 using System;
 using SharpApi.Helpers.ObjectExtensions.Serialization;
-using SharpApi.Helpers.test.MockUp;
+using SharpApi.Helpers.test.Model;
 using Xunit;
 
 namespace SharpApi.Helpers.test.ObjectExtensions.Serialization

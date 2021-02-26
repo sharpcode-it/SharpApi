@@ -32,7 +32,7 @@ namespace SharpApi.Utility.Test.Random
 
             for (var i = 0; i < 1000; i++)
             {
-                var str = RandomGenerator.GetString(10);
+                var str = RandomGenerator.GetString(0,10);
                 if (listOfString.Contains(str)) break;
                 listOfString.Add(str);
             }
@@ -43,7 +43,7 @@ namespace SharpApi.Utility.Test.Random
 
             for (var i = 0; i < 1000; i++)
             {
-                var str = RandomGenerator.GetString(10,"#!_&&$_abc");
+                var str = RandomGenerator.GetString(0,10,"#!_&&$_abc");
                 if (listOfString.Contains(str)) break;
                 listOfString.Add(str);
             }

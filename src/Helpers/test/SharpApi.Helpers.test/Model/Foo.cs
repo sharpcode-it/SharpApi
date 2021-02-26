@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpApi.Helpers.test.MockUp
+namespace SharpApi.Helpers.test.Model
 {
     [Serializable]
     public class Foo:IEquatable<Foo>

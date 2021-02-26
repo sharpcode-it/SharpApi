@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml.Schema;
 
 namespace SharpApi.Helpers.ValueTypeExtensions
 {
@@ -71,6 +74,24 @@ namespace SharpApi.Helpers.ValueTypeExtensions
         public static bool IsNullOrEmpty(this string? s)
         {
             return string.IsNullOrEmpty(s);
+        }
+
+        public static bool IsLenghtWithin(this string? value, int minValue, int maxValue)
+        {
+            if (value.IsNullOrEmpty()) return false;
+            Debug.Assert(value != null, nameof(value) + " != null");
+            return value.Length.IsWithin(minValue, maxValue);
+        }
+
+        public static string ToFileSize(this long size)
+        {
+            if (size < 1024) { return (size).ToString("F0") + " bytes"; }
+            if (size < Math.Pow(1024, 2)) { return (size / 1024).ToString("F0") + "KB"; }
+            if (size < Math.Pow(1024, 3)) { return (size / Math.Pow(1024, 2)).ToString("F0") + "MB"; }
+            if (size < Math.Pow(1024, 4)) { return (size / Math.Pow(1024, 3)).ToString("F0") + "GB"; }
+            if (size < Math.Pow(1024, 5)) { return (size / Math.Pow(1024, 4)).ToString("F0") + "TB"; }
+            if (size < Math.Pow(1024, 6)) { return (size / Math.Pow(1024, 5)).ToString("F0") + "PB"; }
+            return (size / Math.Pow(1024, 6)).ToString("F0") + "EB";
         }
     }
 }

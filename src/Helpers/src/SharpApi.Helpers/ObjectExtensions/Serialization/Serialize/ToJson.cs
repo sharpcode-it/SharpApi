@@ -11,22 +11,14 @@ namespace SharpApi.Helpers.ObjectExtensions.Serialization
         /// This method serializes the specific object to JSON
         /// </summary>
         /// <param name="istance"></param>
-        /// <param name="serializeApiType"></param>
+        /// <param name="serializeContext"></param>
         /// <returns></returns>
-        public static string ToJson(this object? istance,
-            SerializeApiType serializeApiType = SerializeApiType.NewtonSoft)
-        {
-            return (istance is null)
-                ? string.Empty
-                : serializeApiType == SerializeApiType.NewtonSoft
-                    ? JsonConvert.SerializeObject(istance)
-                    : System.Text.Json.JsonSerializer.Serialize(istance);
-
-        }
-
-        public static string ToJson(this object? istance, object serializeContext)
+        public static string ToJson(this object? istance, object? serializeContext)
         {
             if (istance is null) return string.Empty;
+
+            if (serializeContext == null)
+                return istance.ToJson(SerializeApiType.NewtonSoft);
 
             return serializeContext switch
             {
@@ -35,5 +27,17 @@ namespace SharpApi.Helpers.ObjectExtensions.Serialization
                 _ => throw new NotImplementedException()
             };
         }
+
+        #region Private Method
+        private static string ToJson(this object? istance, SerializeApiType serializeApiType)
+        {
+            return (istance is null)
+                ? string.Empty
+                : serializeApiType == SerializeApiType.NewtonSoft
+                    ? JsonConvert.SerializeObject(istance)
+                    : System.Text.Json.JsonSerializer.Serialize(istance);
+
+        }
+        #endregion
     }
 }
