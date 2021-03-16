@@ -51,13 +51,13 @@ jobs:
         run: dotnet test ./SharpApi.sln -c Release --no-build
       - name: Pack
         if: matrix.os == 'ubuntu-latest'
-        run: dotnet pack -v normal -c Release --no-restore --no-build -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }}-${{ steps.gitversion.outputs.CommitsSinceVersionSourcePadded }} ./SharpApi.sln
+        run: dotnet pack -v normal -c Release --no-restore --no-build -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }} ./SharpApi.sln
       - name: Upload Artifact
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v2
         with:
           name: nupkg
-          path: ./SharpHelpers/${{ env.PROJECT_NAME }}/bin/Release/*.nupkg
+          path: /home/runner/work/SharpApi/SharpApi/src/Helpers/src/SharpApi.Helpers/bin/Release/*.nupkg
   prerelease:
     needs: build
     if: github.ref == 'refs/heads/develop'
