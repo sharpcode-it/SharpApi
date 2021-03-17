@@ -13,7 +13,7 @@ env:
   # Project name to pack and publish
   PROJECT_NAME: SharpHelpers
   # GitHub Packages Feed settings
-  GITHUB_FEED: https://nuget.pkg.github.com/shaprcode-it/
+  GITHUB_FEED: https://nuget.pkg.github.com/shaprcode-it/index.json
   GITHUB_USER: iscifoni
   GITHUB_TOKEN: ${{ secrets.SHARPAPI_GITHUB_TOKEN }}
   # Official NuGet Feed settings
@@ -67,6 +67,10 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: nupkg
+      - name: Add GPR Source
+        run: nuget sources add -name "GPR" -Source $GITHUB_FEED -Username $GITHUB_USER -Password $GITHUB_TOKEN
+      - name: nuget push
+        run: nuget push /home/runner/work/SharpApi/SharpApi/nupkg/**/bin/Release/*.nupkg -Source "GPR" -SkipDuplicate
       - name: Push to GitHub Feed
         run: |
           for f in /home/runner/work/SharpApi/SharpApi/nupkg/**/bin/Release/*.nupkg
