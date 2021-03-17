@@ -72,6 +72,7 @@ jobs:
           for f in /home/runner/work/SharpApi/SharpApi/nupkg/**/bin/Release/*.nupkg
           do
             echo $f
+            echo $GITHUB_TOKEN
             curl --silent --show-error --fail -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
           done
   deploy:
