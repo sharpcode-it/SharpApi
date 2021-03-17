@@ -13,7 +13,7 @@ env:
   # Project name to pack and publish
   PROJECT_NAME: SharpHelpers
   # GitHub Packages Feed settings
-  GITHUB_FEED: https://nuget.pkg.github.com/shaprcode-it/
+  GITHUB_FEED: https://nuget.pkg.github.com/sharpcode-it/
   GITHUB_USER: iscifoni
   GITHUB_TOKEN: ${{ secrets.SHARPAPI_GITHUB_TOKEN }}
   # Official NuGet Feed settings
