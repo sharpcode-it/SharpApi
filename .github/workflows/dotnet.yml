@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: nupkg
-          path: /home/runner/work/SharpCodeApi/SharpApi/src/Helpers/src/SharpApi.Helpers/bin/Release/*.nupkg
+          path: /home/runner/work/SharpCodingApi/SharpCodingApi/src/Helpers/src/SharpApi.Helpers/bin/Release/*.nupkg
   prerelease:
     needs: build
     if: github.ref == 'refs/heads/develop'
@@ -70,7 +70,7 @@ jobs:
       - name: Add GPR Source
         run: nuget sources add -name "GPR" -Source $GITHUB_FEED -Username $GITHUB_USER -Password $GITHUB_TOKEN
       - name: nuget push
-        run: dotnet nuget push /home/runner/work/SharpCodeApi/SharpApi/nupkg/**/bin/Release/*.nupkg --source $GITHUB_FEED --api-key $GITHUB_TOKEN --skip-duplicate --no-symbols true
+        run: dotnet nuget push /home/runner/work/SharpCodingApi/SharpCodingApi/nupkg/**/bin/Release/*.nupkg --source $GITHUB_FEED --api-key $GITHUB_TOKEN --skip-duplicate --no-symbols true
   deploy:
     needs: build
     if: github.event_name == 'release' && startsWith(github.ref, 'refs/heads/v')
@@ -81,4 +81,4 @@ jobs:
         with:
           name: nupkg
       - name: Push to NuGet Feed
-        run: dotnet nuget push /home/runner/work/SharpCodeApi/SharpApi/nupkg/**/bin/Release/*.nupkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
+        run: dotnet nuget push /home/runner/work/SharpCodingApi/SharpCodingApi/nupkg/**/bin/Release/*.nupkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
