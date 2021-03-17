@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>annotations</Nullable>
-    <PackageProjectUrl>https://github.com/sharpcode-it/SharpApi</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/sharpcode-it/SharpApi</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/sharpcode-it/SharpCodingApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sharpcode-it/SharpCodingApi</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
