@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageProjectUrl>https://github.com/sharpcode-it/SharpApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sharpcode-it/SharpApi</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -15,7 +15,7 @@ env:
   # GitHub Packages Feed settings
   GITHUB_FEED: https://nuget.pkg.github.com/shaprcode-it/
   GITHUB_USER: iscifoni
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.SHARPAPI_GITHUB_TOKEN }}
   # Official NuGet Feed settings
   NUGET_FEED: https://api.nuget.org/v3/index.json
   NUGET_KEY: ${{ secrets.NUGET_TOKEN }}
@@ -67,36 +67,18 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: nupkg
-      - name: Push to GitHub Feed
-        run: |
-          for f in ./nupkg/*.nupkg
-          do
-            echo $f
-            curl --silent --show-error --fail -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
-          done
+      - name: Add GPR Source
+        run: nuget sources add -name "GPR" -Source $GITHUB_FEED -Username $GITHUB_USER -Password $GITHUB_TOKEN
+      - name: nuget push
+        run: dotnet nuget push /home/runner/work/SharpApi/SharpApi/nupkg/**/bin/Release/*.nupkg --source $GITHUB_FEED --api-key $GITHUB_TOKEN --skip-duplicate --no-symbols true
   deploy:
     needs: build
     if: github.event_name == 'release' && startsWith(github.ref, 'refs/heads/v')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
         with:
-          dotnet-version: 5.0.100
-      - name: Create Release NuGet package
-        run: |
-          arrTag=(${GITHUB_REF//\// })
-          VERSION="${arrTag[2]}"
-          echo Version: $VERSION
-          VERSION="${VERSION//v}"
-          echo Clean Version: $VERSION
-          dotnet pack -v normal -c Release --include-symbols --include-source -p:PackageVersion=$VERSION -o nupkg src/$PROJECT_NAME/$PROJECT_NAME.*proj
-      - name: Push to GitHub Feed
-        run: |
-          for f in ./nupkg/*.nupkg
-          do
-            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
-          done
+          name: nupkg
       - name: Push to NuGet Feed
-        run: dotnet nuget push ./nupkg/*.nupkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
+        run: dotnet nuget push /home/runner/work/SharpApi/SharpApi/nupkg/**/bin/Release/*.nupkg --source $NUGET_FEED --skip-duplicate --api-key $NUGET_KEY
